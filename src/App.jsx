@@ -1,11 +1,13 @@
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
+import { DashboardPage } from "./pages/DashboardPage";
 
 const App = () => {
   return (
     <>
-      {/* <Login /> */}
-      <Register />
+      {/* <LoginPage />
+      <RegisterPage /> */}
+      <DashboardPage />
     </>
   );
 };
