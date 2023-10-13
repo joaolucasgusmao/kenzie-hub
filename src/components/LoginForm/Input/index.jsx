@@ -1,7 +1,9 @@
-export const Input = ({ label, id, ...rest }) => {
+export const Input = ({ label, labelClass, id, ...rest }) => {
   return (
     <>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} className={labelClass}>
+        {label}
+      </label>
       <input {...rest} id={id} />
       {/* Icone do olho */}
     </>

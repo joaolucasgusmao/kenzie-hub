@@ -2,12 +2,12 @@ export const Main = () => {
   return (
     <main>
       <div>
-        <p>Olá, João Lucas</p>
-        <p>Primeiro módulo (Introdução ao Frontend)</p>
+        <p className="title">Olá, João Lucas</p>
+        <p className="smText">Primeiro módulo (Introdução ao Frontend)</p>
       </div>
       <div>
-        <p>Que pena! Estamos em desenvolvimento :(</p>
-        <p>
+        <p className="title">Que pena! Estamos em desenvolvimento :(</p>
+        <p className="title text">
           Nossa aplicação está em desenvolvimento, em breve teremos novidades
         </p>
       </div>

@@ -6,9 +6,9 @@ import "./styles/index.scss";
 const App = () => {
   return (
     <>
-      <LoginPage />
+      {/* <LoginPage /> */}
       {/* <RegisterPage /> */}
-      {/* <DashboardPage /> */}
+      <DashboardPage />
     </>
   );
 };

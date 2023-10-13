@@ -4,6 +4,14 @@
 
   font-size: var(--title1);
   line-height: 1.75rem;
+
+  &.text {
+    color: var(--white);
+    font-weight: var(--weight4);
+
+    font-size: var(--title2);
+    line-height: 1.5225rem;
+  }
 }
 
 .label {

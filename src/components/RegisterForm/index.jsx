@@ -1,22 +1,25 @@
 import { Input } from "./Input";
 import { SelectInput } from "./SelectInput";
+import Logo from "../../assets/Logo.svg"
 
 export const RegisterForm = () => {
   return (
     <div>
       <div>
-        <img src="" alt="Logo" />
-        <button>Voltar</button>
+        <img src={Logo} alt="Logo" />
+        <button className="btn back">Voltar</button>
       </div>
       <form>
         <div>
-          <p>Crie sua conta</p>
-          <span>Rapido e grátis, vamos nessa</span>
+          <h2 className="title">Crie sua conta</h2>
+          <span className="smText register">Rapido e grátis, vamos nessa</span>
         </div>
         <div>
           <Input
             label="Nome"
+            labelClass="label"
             id="name"
+            className=""
             placeholder="Digite aqui seu nome"
             type="text"
             name="name"
@@ -25,7 +28,9 @@ export const RegisterForm = () => {
         <div>
           <Input
             label="Email"
+            labelClass="label"
             id="email"
+            className=""
             placeholder="Digite aqui seu email"
             type="email"
             name="email"
@@ -34,7 +39,9 @@ export const RegisterForm = () => {
         <div>
           <Input
             label="Senha"
+            labelClass="label"
             id="password"
+            className=""
             placeholder="Digite aqui sua senha"
             type="password"
             name="password"
@@ -43,7 +50,9 @@ export const RegisterForm = () => {
         <div>
           <Input
             label="Confirmar Senha"
+            labelClass="label"
             id="confirmPassword"
+            className=""
             placeholder="Digite novamente sua senha"
             type="password"
             name="confirmPassword"
@@ -52,7 +61,9 @@ export const RegisterForm = () => {
         <div>
           <Input
             label="Bio"
+            labelClass="label"
             id="bio"
+            className=""
             placeholder="Fale sobre você"
             type="text"
             name="bio"
@@ -61,7 +72,9 @@ export const RegisterForm = () => {
         <div>
           <Input
             label="Contato"
+            labelClass="label"
             id="contact"
+            className=""
             placeholder="Opção de contato"
             type="text"
             name="contact"
@@ -70,7 +83,9 @@ export const RegisterForm = () => {
         <div>
           <SelectInput label="Selecionar módulo" id="moduleOptions" />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button className="btn registerDisabled" type="submit">
+          Cadastrar
+        </button>
       </form>
     </div>
   );
