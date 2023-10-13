@@ -1,0 +1,41 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: 2rem;
+
+  height: 3rem;
+
+  border-radius: 0.2537rem;
+
+  font-size: var(--title2);
+  line-height: 1.6494rem;
+
+  font-weight: var(--weight3);
+
+  &.enter {
+    background-color: var(--color-primary);
+    color: var(--white);
+  }
+
+  &.register {
+    color: var(--gray-0);
+  }
+
+  &.registerDisabled {
+    background-color: var(--color-primary-negative);
+    color: var(--white);
+  }
+
+  .back {
+    background-color: var(--gray-3);
+    color: var(--gray-0);
+    font-weight: var(--weight2);
+
+    font-size: var(--headline);
+    line-height: 1.7763rem;
+
+    padding-inline: 0.8rem;
+  }
+}
