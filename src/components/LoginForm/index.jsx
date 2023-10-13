@@ -7,7 +7,7 @@ export const LoginForm = () => {
       <form>
         <h2>Login</h2>
         <div>
-          <Input label="E-mail" id="email" type="email" name="email" />
+          <Input label="Email" id="email" type="email" name="email" />
         </div>
         <div>
           <Input label="Senha" id="password" type="password" name="password" />
