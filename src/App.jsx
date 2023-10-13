@@ -6,8 +6,8 @@ import "./styles/index.scss";
 const App = () => {
   return (
     <>
-      <LoginPage />
-      {/* <RegisterPage />  */}
+      {/* <LoginPage /> */}
+      <RegisterPage />
       {/* <DashboardPage /> */}
     </>
   );
