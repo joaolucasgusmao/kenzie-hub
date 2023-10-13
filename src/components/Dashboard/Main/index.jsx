@@ -1,6 +1,6 @@
 export const Main = () => {
   return (
-    <main>
+    <main className="container">
       <div>
         <p className="title">Olá, João Lucas</p>
         <p className="smText">Primeiro módulo (Introdução ao Frontend)</p>

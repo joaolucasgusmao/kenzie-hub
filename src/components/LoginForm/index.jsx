@@ -3,7 +3,7 @@ import Logo from "../../assets/Logo.svg";
 
 export const LoginForm = () => {
   return (
-    <div>
+    <div className="container">
       <img src={Logo} alt="Logo" />
       <form>
         <h2 className="title">Login</h2>

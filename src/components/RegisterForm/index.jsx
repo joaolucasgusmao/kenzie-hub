@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo.svg"
 
 export const RegisterForm = () => {
   return (
-    <div>
+    <div className="container">
       <div>
         <img src={Logo} alt="Logo" />
         <button className="btn back">Voltar</button>
