@@ -22,7 +22,6 @@ export const RegisterForm = () => {
 
   const submit = (formData) => {
     const { confirmPassword, ...dataWithoutConfirmPassword } = formData;
-    console.log(dataWithoutConfirmPassword);
     reset();
     request(dataWithoutConfirmPassword);
   };

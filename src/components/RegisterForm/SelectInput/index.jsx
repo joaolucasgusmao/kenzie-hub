@@ -2,17 +2,16 @@ import { forwardRef } from "react";
 import { Option } from "./Option";
 
 export const SelectInput = forwardRef(
-  ({ label, labelClass, value, setModuleOptions, id, name }, ref) => {
+  ({ label, labelClass, setModuleOptions, id, ...rest }, ref) => {
     return (
       <>
         <label htmlFor={id} className={labelClass}>
           {label}
         </label>
         <select
+          {...rest}
           id={id}
-          value={value}
           onChange={(event) => setModuleOptions(event.target.value)}
-          name={name}
           ref={ref}
         >
           <Option value="" textName="Selecione um módulo" />

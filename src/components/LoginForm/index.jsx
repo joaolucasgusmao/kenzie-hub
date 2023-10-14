@@ -25,7 +25,6 @@ export const LoginForm = () => {
   };
 
   const submit = (formData) => {
-    console.log(formData);
     reset();
     request(formData);
   };
