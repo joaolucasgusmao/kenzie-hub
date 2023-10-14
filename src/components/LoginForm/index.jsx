@@ -1,6 +1,8 @@
 import { Input } from "./Input";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
+import { Link } from "react-router-dom";
+import { RegisterPage } from "../../pages/RegisterPage";
 
 export const LoginForm = () => {
   return (
@@ -29,7 +31,9 @@ export const LoginForm = () => {
         <button className="btn enter">Entrar</button>
         <div className={styles.bottomDiv}>
           <p className="smText">Ainda não possui uma conta?</p>
-          <button className="btn register">Cadastre-se</button>
+          <Link to="/register">
+            <button className="btn register">Cadastre-se</button>
+          </Link>
         </div>
       </form>
     </div>

@@ -2,13 +2,16 @@ import { Input } from "./Input";
 import { SelectInput } from "./SelectInput";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
+import { Link } from "react-router-dom";
 
 export const RegisterForm = () => {
   return (
     <div className="container register">
       <div className={styles.topDiv}>
         <img src={Logo} alt="Logo" />
-        <button className="btn back">Voltar</button>
+        <Link to="/">
+          <button className="btn back">Voltar</button>
+        </Link>
       </div>
       <form className={styles.form}>
         <div className={styles.textsDiv}>
