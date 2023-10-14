@@ -1,0 +1,56 @@
+.form {
+  width: 23.0625rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+
+  background-color: var(--gray-3);
+
+  border-radius: var(--radius);
+
+  h2 {
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .inputsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    width: 20.3125rem;
+    margin: 0 auto;
+
+    input {
+      height: 2.6rem;
+
+      background-color: var(--gray-2);
+      color: var(--gray-0);
+
+      border-radius: var(--radius);
+
+      padding-left: 1rem;
+    }
+
+    input:focus {
+      border: 0.0625rem solid var(--gray-0);
+    }
+  }
+
+  .bottomDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    width: 20.3125rem;
+
+    margin: 1.2rem auto 2.5rem auto;
+
+    p {
+      text-align: center;
+    }
+  }
+}

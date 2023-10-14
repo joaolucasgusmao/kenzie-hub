@@ -1,0 +1,60 @@
+.btn {
+  align-items: center;
+  justify-content: center;
+
+  height: 3rem;
+
+  border-radius: 0.2537rem;
+
+  font-size: var(--title2);
+  line-height: 1.6494rem;
+
+  font-weight: var(--weight3);
+
+  &.enter {
+    background-color: var(--color-primary);
+    color: var(--white);
+    width: 20.3125rem;
+    margin: 0 auto;
+  }
+
+  &.register {
+    color: var(--gray-0);
+    background-color: var(--gray-1);
+
+    width: 20.6206rem;
+    margin: auto;
+  }
+
+  &.registerDisabled {
+    background-color: var(--color-primary-negative);
+    color: var(--white);
+
+    width: 20.6206rem;
+    margin: 0 auto 1.8rem auto;
+  }
+
+  &.back {
+    background-color: var(--gray-3);
+    color: var(--gray-0);
+    font-weight: var(--weight2);
+
+    height: 2.7rem;
+
+    font-size: var(--headline);
+    line-height: 1.7763rem;
+
+    padding-inline: 1rem;
+  }
+
+  &.exit {
+    height: 2.5rem;
+
+    padding-inline: 1.2rem;
+    line-height: 1.7763rem;
+
+    background-color: var(--gray-3);
+    color: var(--gray-0);
+    font-weight: var(--weight2);
+  }
+}
