@@ -1,11 +1,14 @@
-export const Input = ({ label, labelClass, id, ...rest }) => {
-  return (
-    <>
-      <label htmlFor={id} className={labelClass}>
-        {label}
-      </label>
-      <input {...rest} id={id} />
-      {/* Icone do olho */}
-    </>
-  );
-};
+import { forwardRef } from "react";
+
+export const Input = forwardRef(
+  ({ label, labelClass, id, src, ...rest }, ref) => {
+    return (
+      <>
+        <label htmlFor={id} className={labelClass}>
+          {label}
+        </label>
+        <input {...rest} id={id} ref={ref} />
+      </>
+    );
+  }
+);

@@ -3,8 +3,19 @@ import { SelectInput } from "./SelectInput";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export const RegisterForm = () => {
+  const [moduleOptions, setModuleOptions] = useState("Primeiro Modulo");
+  const { register, handleSubmit } = useForm();
+
+  // console.log(moduleOptions);
+
+  const submit = (formData) => {
+    console.log(formData);
+  };
+
   return (
     <div className="container register">
       <div className={styles.topDiv}>
@@ -13,7 +24,7 @@ export const RegisterForm = () => {
           <button className="btn back">Voltar</button>
         </Link>
       </div>
-      <form className={styles.form}>
+      <form onSubmit={handleSubmit(submit)} className={styles.form}>
         <div className={styles.textsDiv}>
           <h2 className="title">Crie sua conta</h2>
           <span className="smText register">Rapido e grátis, vamos nessa</span>
@@ -27,6 +38,7 @@ export const RegisterForm = () => {
             placeholder="Digite aqui seu nome"
             type="text"
             name="name"
+            {...register("name")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -38,6 +50,7 @@ export const RegisterForm = () => {
             placeholder="Digite aqui seu email"
             type="email"
             name="email"
+            {...register("email")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -49,6 +62,7 @@ export const RegisterForm = () => {
             placeholder="Digite aqui sua senha"
             type="password"
             name="password"
+            {...register("password")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -60,6 +74,7 @@ export const RegisterForm = () => {
             placeholder="Digite novamente sua senha"
             type="password"
             name="confirmPassword"
+            {...register("confirmPassword")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -71,6 +86,7 @@ export const RegisterForm = () => {
             placeholder="Fale sobre você"
             type="text"
             name="bio"
+            {...register("bio")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -82,6 +98,7 @@ export const RegisterForm = () => {
             placeholder="Opção de contato"
             type="text"
             name="contact"
+            {...register("contact")}
           />
         </div>
         <div className={styles.inputsDiv}>
@@ -89,6 +106,9 @@ export const RegisterForm = () => {
             label="Selecionar módulo"
             labelClass="label"
             id="moduleOptions"
+            value={moduleOptions}
+            setModuleOptions={setModuleOptions}
+            {...register("moduleOptions")}
           />
         </div>
         <button className="btn registerDisabled" type="submit">

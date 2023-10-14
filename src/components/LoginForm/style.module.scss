@@ -16,7 +16,7 @@
     padding-top: 2rem;
   }
 
-  .inputsDiv {
+  .emailInputDiv {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -24,7 +24,7 @@
     width: 20.3125rem;
     margin: 0 auto;
 
-    input {
+    .emailInput {
       height: 2.6rem;
 
       background-color: var(--gray-2);
@@ -35,8 +35,40 @@
       padding-left: 1rem;
     }
 
-    input:focus {
+    .emailInput:focus {
       border: 0.0625rem solid var(--gray-0);
+    }
+  }
+
+  .passwordInputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    width: 20.3125rem;
+    margin: 0 auto;
+
+    position: relative;
+
+    .passwordInput {
+      height: 2.6rem;
+
+      background-color: var(--gray-2);
+      color: var(--gray-0);
+
+      border-radius: var(--radius);
+
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .icon {
+      color: var(--gray-1);
+      position: absolute;
+      top: 2.6rem;
+      right: 1rem;
+
+      cursor: pointer;
     }
   }
 
