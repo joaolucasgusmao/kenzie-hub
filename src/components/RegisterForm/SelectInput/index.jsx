@@ -15,6 +15,7 @@ export const SelectInput = forwardRef(
           name={name}
           ref={ref}
         >
+          <Option value="" textName="Selecione um módulo" />
           <Option value="Primeiro Módulo" textName="Primeiro Módulo" />
           <Option value="Segundo Módulo" textName="Segundo Módulo" />
           <Option value="Terceiro Módulo" textName="Terceiro Módulo" />

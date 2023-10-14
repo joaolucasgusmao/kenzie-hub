@@ -4,11 +4,21 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { formSchemaLogin } from "./LoginForm.schema";
+import { api } from "../../services/api";
 
 export const LoginForm = () => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(formSchemaLogin),
+  });
 
   const handleHiddenPassword = () => {
     setHiddenPassword(!hiddenPassword);
@@ -16,6 +26,23 @@ export const LoginForm = () => {
 
   const submit = (formData) => {
     console.log(formData);
+    reset();
+    request(formData);
+  };
+
+  const request = async (formData) => {
+    try {
+      const { data } = await api.post("/sessions", formData);
+      window.location.href = "/dashboard";
+      localStorage.setItem("@token", JSON.stringify(data.token));
+      localStorage.setItem("@name", JSON.stringify(data.user.name));
+      localStorage.setItem(
+        "@courseModule",
+        JSON.stringify(data.user.course_module)
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const passwordType = hiddenPassword ? "password" : "text";
@@ -36,6 +63,7 @@ export const LoginForm = () => {
             {...register("email")}
           />
         </div>
+        {errors.email ? <p>{errors.email.message}</p> : null}
         <div className={styles.passwordInputDiv}>
           <Input
             label="Senha"

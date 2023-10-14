@@ -62,4 +62,24 @@
       border-radius: var(--radius);
     }
   }
+
+  .passwordInputDiv {
+    width: 20.6206rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    margin: 0 auto;
+
+    .passwordInput {
+      height: 2.6rem;
+
+      padding-left: 1rem;
+
+      background-color: var(--gray-2);
+      color: var(--gray-0);
+      border-radius: var(--radius);
+    }
+  }
 }

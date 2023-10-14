@@ -5,15 +5,35 @@ import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { formSchemaRegister } from "./RegisterForm.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../../services/api";
 
 export const RegisterForm = () => {
-  const [moduleOptions, setModuleOptions] = useState("Primeiro Modulo");
-  const { register, handleSubmit } = useForm();
-
-  // console.log(moduleOptions);
+  const [moduleOptions, setModuleOptions] = useState("Primeiro Módulo");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(formSchemaRegister),
+  });
 
   const submit = (formData) => {
-    console.log(formData);
+    const { confirmPassword, ...dataWithoutConfirmPassword } = formData;
+    console.log(dataWithoutConfirmPassword);
+    reset();
+    request(dataWithoutConfirmPassword);
+  };
+
+  const request = async (formData) => {
+    try {
+      await api.post("/users", formData);
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -34,7 +54,6 @@ export const RegisterForm = () => {
             label="Nome"
             labelClass="label"
             id="name"
-            className=""
             placeholder="Digite aqui seu nome"
             type="text"
             name="name"
@@ -46,7 +65,6 @@ export const RegisterForm = () => {
             label="Email"
             labelClass="label"
             id="email"
-            className=""
             placeholder="Digite aqui seu email"
             type="email"
             name="email"
@@ -58,7 +76,6 @@ export const RegisterForm = () => {
             label="Senha"
             labelClass="label"
             id="password"
-            className=""
             placeholder="Digite aqui sua senha"
             type="password"
             name="password"
@@ -70,19 +87,20 @@ export const RegisterForm = () => {
             label="Confirmar Senha"
             labelClass="label"
             id="confirmPassword"
-            className=""
             placeholder="Digite novamente sua senha"
             type="password"
             name="confirmPassword"
             {...register("confirmPassword")}
           />
+          {errors.confirmPassword ? (
+            <p>{errors.confirmPassword.message}</p>
+          ) : null}
         </div>
         <div className={styles.inputsDiv}>
           <Input
             label="Bio"
             labelClass="label"
             id="bio"
-            className=""
             placeholder="Fale sobre você"
             type="text"
             name="bio"
@@ -94,7 +112,6 @@ export const RegisterForm = () => {
             label="Contato"
             labelClass="label"
             id="contact"
-            className=""
             placeholder="Opção de contato"
             type="text"
             name="contact"
@@ -105,10 +122,11 @@ export const RegisterForm = () => {
           <SelectInput
             label="Selecionar módulo"
             labelClass="label"
-            id="moduleOptions"
+            id="course_module"
+            name="course_module"
             value={moduleOptions}
             setModuleOptions={setModuleOptions}
-            {...register("moduleOptions")}
+            {...register("course_module")}
           />
         </div>
         <button className="btn registerDisabled" type="submit">
