@@ -8,13 +8,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { formSchemaLogin } from "./LoginForm.schema";
 import { api } from "../../services/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const LoginForm = () => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
+
+  const notifySucess = () => {
+    toast.success("Login realizado com sucesso!");
+  };
+
+  const notifyError = () => {
+    toast.error("Credenciais inválidas!");
+  };
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchemaLogin),
@@ -25,14 +35,16 @@ export const LoginForm = () => {
   };
 
   const submit = (formData) => {
-    reset();
     request(formData);
   };
 
   const request = async (formData) => {
     try {
       const { data } = await api.post("/sessions", formData);
-      window.location.href = "/dashboard";
+      notifySucess();
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 3000);
       localStorage.setItem("@token", JSON.stringify(data.token));
       localStorage.setItem("@name", JSON.stringify(data.user.name));
       localStorage.setItem(
@@ -40,7 +52,7 @@ export const LoginForm = () => {
         JSON.stringify(data.user.course_module)
       );
     } catch (error) {
-      console.log(error);
+      notifyError();
     }
   };
 
@@ -92,6 +104,7 @@ export const LoginForm = () => {
           </Link>
         </div>
       </form>
+      <ToastContainer theme="dark" autoClose={2000} />
     </div>
   );
 };
