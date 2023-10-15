@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const RegisterForm = () => {
   const [moduleOptions, setModuleOptions] = useState("Selecione um módulo");
   const [hiddenPassword, setHiddenPassword] = useState(true);
+  const [hiddenConfirmPassword, setHiddenConfirmPassword] = useState(true);
 
   const notifySucess = () => {
     toast.success("Conta criada com sucesso!");
@@ -28,7 +29,12 @@ export const RegisterForm = () => {
     setHiddenPassword(!hiddenPassword);
   };
 
+  const handleHiddenConfirmPassword = () => {
+    setHiddenConfirmPassword(!hiddenConfirmPassword);
+  };
+
   const passwordType = hiddenPassword ? "password" : "text";
+  const confirmPasswordType = hiddenConfirmPassword ? "password" : "text";
 
   const {
     register,
@@ -107,9 +113,15 @@ export const RegisterForm = () => {
             {...register("password")}
           />
           {hiddenPassword ? (
-            <AiFillEye onClick={handleHiddenPassword} />
+            <AiFillEye
+              onClick={handleHiddenPassword}
+              className={styles.iconPassword}
+            />
           ) : (
-            <AiFillEyeInvisible onClick={handleHiddenPassword} />
+            <AiFillEyeInvisible
+              onClick={handleHiddenPassword}
+              className={styles.iconPassword}
+            />
           )}
           {errors.password ? <p>{errors.password.message}</p> : null}
         </div>
@@ -120,14 +132,20 @@ export const RegisterForm = () => {
             id="confirmPassword"
             className={styles.confirmPasswordInput}
             placeholder="Digite novamente sua senha"
-            type={passwordType}
+            type={confirmPasswordType}
             name="confirmPassword"
             {...register("confirmPassword")}
           />
-          {hiddenPassword ? (
-            <AiFillEye onClick={handleHiddenPassword} />
+          {hiddenConfirmPassword ? (
+            <AiFillEye
+              onClick={handleHiddenConfirmPassword}
+              className={styles.iconConfirmPassword}
+            />
           ) : (
-            <AiFillEyeInvisible onClick={handleHiddenPassword} />
+            <AiFillEyeInvisible
+              onClick={handleHiddenConfirmPassword}
+              className={styles.iconConfirmPassword}
+            />
           )}
           {errors.confirmPassword ? (
             <p>{errors.confirmPassword.message}</p>

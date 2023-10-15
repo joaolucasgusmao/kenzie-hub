@@ -72,6 +72,8 @@
 
     margin: 0 auto;
 
+    position: relative;
+
     .passwordInput {
       height: 2.6rem;
 
@@ -80,6 +82,15 @@
       background-color: var(--gray-2);
       color: var(--gray-0);
       border-radius: var(--radius);
+    }
+
+    .iconPassword {
+      color: var(--gray-1);
+      position: absolute;
+      top: 2.6rem;
+      right: 1rem;
+
+      cursor: pointer;
     }
   }
 
@@ -92,6 +103,8 @@
 
     margin: 0 auto;
 
+    position: relative;
+
     .confirmPasswordInput {
       height: 2.6rem;
 
@@ -100,6 +113,15 @@
       background-color: var(--gray-2);
       color: var(--gray-0);
       border-radius: var(--radius);
+    }
+
+    .iconConfirmPassword {
+      color: var(--gray-1);
+      position: absolute;
+      top: 2.6rem;
+      right: 1rem;
+
+      cursor: pointer;
     }
   }
 
@@ -110,11 +132,9 @@
   }
 }
 
-.iconConfirmPasswordInput {
-  color: var(--gray-1);
-  position: absolute;
-  top: 2.6rem;
-  right: 1rem;
-
-  cursor: pointer;
+@media (max-width: 380px) {
+  .form,
+  .topDiv {
+    width: 22rem;
+  }
 }

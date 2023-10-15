@@ -72,6 +72,12 @@
     }
   }
 
+  p {
+    font-size: var(--headline);
+
+    color: var(--color-primary);
+  }
+
   .bottomDiv {
     display: flex;
     flex-direction: column;
@@ -84,5 +90,11 @@
     p {
       text-align: center;
     }
+  }
+}
+
+@media (max-width: 380px) {
+  .form {
+    width: 22rem;
   }
 }

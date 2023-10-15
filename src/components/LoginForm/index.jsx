@@ -73,8 +73,8 @@ export const LoginForm = () => {
             name="email"
             {...register("email")}
           />
+          {errors.email ? <p>{errors.email.message}</p> : null}
         </div>
-        {errors.email ? <p>{errors.email.message}</p> : null}
         <div className={styles.passwordInputDiv}>
           <Input
             label="Senha"
@@ -93,12 +93,13 @@ export const LoginForm = () => {
               className={styles.icon}
             />
           )}
+          {errors.password ? <p>{errors.password.message}</p> : null}
         </div>
         <button type="submit" className="btn enter">
           Entrar
         </button>
         <div className={styles.bottomDiv}>
-          <p className="smText">Ainda não possui uma conta?</p>
+          <span className="smText">Ainda não possui uma conta?</span>
           <Link to="/register">
             <button className="btn register">Cadastre-se</button>
           </Link>
