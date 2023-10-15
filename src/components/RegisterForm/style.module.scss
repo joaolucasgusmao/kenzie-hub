@@ -62,4 +62,79 @@
       border-radius: var(--radius);
     }
   }
+
+  .passwordInputDiv {
+    width: 20.6206rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    .passwordInput {
+      height: 2.6rem;
+
+      padding-left: 1rem;
+
+      background-color: var(--gray-2);
+      color: var(--gray-0);
+      border-radius: var(--radius);
+    }
+
+    .iconPassword {
+      color: var(--gray-1);
+      position: absolute;
+      top: 2.6rem;
+      right: 1rem;
+
+      cursor: pointer;
+    }
+  }
+
+  .confirmPasswordInputDiv {
+    width: 20.6206rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    .confirmPasswordInput {
+      height: 2.6rem;
+
+      padding-left: 1rem;
+
+      background-color: var(--gray-2);
+      color: var(--gray-0);
+      border-radius: var(--radius);
+    }
+
+    .iconConfirmPassword {
+      color: var(--gray-1);
+      position: absolute;
+      top: 2.6rem;
+      right: 1rem;
+
+      cursor: pointer;
+    }
+  }
+
+  p {
+    font-size: var(--headline);
+
+    color: var(--color-primary);
+  }
+}
+
+@media (max-width: 380px) {
+  .form,
+  .topDiv {
+    width: 22rem;
+  }
 }
