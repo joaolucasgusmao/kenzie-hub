@@ -1,14 +1,11 @@
 import styles from "./style.module.scss";
 
-export const Main = () => {
-  const name = JSON.parse(localStorage.getItem("@name"));
-  const courseModule = JSON.parse(localStorage.getItem("@courseModule"));
-
+export const Main = ({ userInfos }) => {
   return (
     <main className="container dashboard">
       <div className={styles.topDiv}>
-        <p className="title">Olá, {name}</p>
-        <p className="smText dashboard">{courseModule}</p>
+        <p className="title">Olá, {userInfos?.name}</p>
+        <p className="smText dashboard">{userInfos?.course_module}</p>
       </div>
       <div className={styles.bottomDiv}>
         <p className="title">Que pena! Estamos em desenvolvimento :(</p>

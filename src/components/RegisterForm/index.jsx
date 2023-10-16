@@ -37,14 +37,13 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     resolver: zodResolver(formSchemaRegister),
   });
 
   const submit = (formData) => {
-    const { confirmPassword, ...dataWithoutConfirmPassword } = formData;
-    request(dataWithoutConfirmPassword);
+    request(formData);
     reset();
   };
 
@@ -194,7 +193,11 @@ export const RegisterForm = () => {
           />
           {errors.course_module ? <p>{errors.course_module.message}</p> : null}
         </div>
-        <button className="btn registerDisabled" type="submit">
+        <button
+          className="btn registerDisabled"
+          type="submit"
+          disabled={!isValid || !isDirty}
+        >
           Cadastrar
         </button>
       </form>
