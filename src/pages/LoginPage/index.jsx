@@ -1,5 +1,5 @@
 import { LoginForm } from "../../components/LoginForm";
 
-export const LoginPage = () => {
-  return <LoginForm />;
+export const LoginPage = ({ setUserInfos }) => {
+  return <LoginForm setUserInfos={setUserInfos} />;
 };

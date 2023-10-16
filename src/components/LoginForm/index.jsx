@@ -11,7 +11,7 @@ import { api } from "../../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const LoginForm = () => {
+export const LoginForm = ({ setUserInfos }) => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
 
   const notifySucess = () => {
@@ -25,7 +25,7 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     resolver: zodResolver(formSchemaLogin),
   });
@@ -44,15 +44,11 @@ export const LoginForm = () => {
     try {
       const { data } = await api.post("/sessions", formData);
       notifySucess();
+      setUserInfos(data.user);
+      localStorage.setItem("@token", JSON.stringify(data.token));
       setTimeout(() => {
         navigate("/dashboard");
       }, 3000);
-      localStorage.setItem("@token", JSON.stringify(data.token));
-      localStorage.setItem("@name", JSON.stringify(data.user.name));
-      localStorage.setItem(
-        "@courseModule",
-        JSON.stringify(data.user.course_module)
-      );
     } catch (error) {
       notifyError();
     }
@@ -99,7 +95,11 @@ export const LoginForm = () => {
           )}
           {errors.password ? <p>{errors.password.message}</p> : null}
         </div>
-        <button type="submit" className="btn enter">
+        <button
+          type="submit"
+          className="btn enter"
+          disabled={!isValid || !isDirty}
+        >
           Entrar
         </button>
         <div className={styles.bottomDiv}>
