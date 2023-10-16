@@ -16,6 +16,7 @@ export const RegisterForm = () => {
   const [moduleOptions, setModuleOptions] = useState("Selecione um módulo");
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const [hiddenConfirmPassword, setHiddenConfirmPassword] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const notifySucess = () => {
     toast.success("Conta criada com sucesso!");
@@ -37,7 +38,7 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty, isValid },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchemaRegister),
   });
@@ -51,6 +52,7 @@ export const RegisterForm = () => {
 
   const request = async (formData) => {
     try {
+      setLoading(true);
       await api.post("/users", formData);
       notifySucess();
       setTimeout(() => {
@@ -58,6 +60,8 @@ export const RegisterForm = () => {
       }, 3000);
     } catch (error) {
       notifyError();
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -196,7 +200,7 @@ export const RegisterForm = () => {
         <button
           className="btn registerDisabled"
           type="submit"
-          disabled={!isValid || !isDirty}
+          disabled={loading}
         >
           Cadastrar
         </button>

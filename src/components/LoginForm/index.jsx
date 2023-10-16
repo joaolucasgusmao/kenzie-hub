@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const LoginForm = ({ setUserInfos }) => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const notifySucess = () => {
     toast.success("Login realizado com sucesso!");
@@ -25,7 +26,7 @@ export const LoginForm = ({ setUserInfos }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchemaLogin),
   });
@@ -42,6 +43,7 @@ export const LoginForm = ({ setUserInfos }) => {
 
   const request = async (formData) => {
     try {
+      setLoading(true);
       const { data } = await api.post("/sessions", formData);
       notifySucess();
       setUserInfos(data.user);
@@ -51,6 +53,8 @@ export const LoginForm = ({ setUserInfos }) => {
       }, 3000);
     } catch (error) {
       notifyError();
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -95,11 +99,7 @@ export const LoginForm = ({ setUserInfos }) => {
           )}
           {errors.password ? <p>{errors.password.message}</p> : null}
         </div>
-        <button
-          type="submit"
-          className="btn enter"
-          disabled={!isValid || !isDirty}
-        >
+        <button type="submit" className="btn enter" disabled={loading}>
           Entrar
         </button>
         <div className={styles.bottomDiv}>
