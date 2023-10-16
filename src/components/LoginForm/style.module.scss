@@ -38,6 +38,10 @@
     .emailInput:focus {
       border: 0.0625rem solid var(--gray-0);
     }
+
+    .error {
+      border: 0.0625rem solid var(--negative);
+    }
   }
 
   .passwordInputDiv {
@@ -62,6 +66,14 @@
       position: relative;
     }
 
+    .passwordInput:focus {
+      border: 0.0625rem solid var(--gray-0);
+    }
+
+    .error {
+      border: 0.0625rem solid var(--negative);
+    }
+
     .icon {
       color: var(--gray-1);
       position: absolute;
@@ -75,7 +87,7 @@
   p {
     font-size: var(--headline);
 
-    color: var(--color-primary);
+    color: var(--negative);
   }
 
   .bottomDiv {
