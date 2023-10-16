@@ -3,7 +3,7 @@ import { SelectInput } from "./SelectInput";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { formSchemaRegister } from "./RegisterForm.schema";
@@ -33,9 +33,6 @@ export const RegisterForm = () => {
     setHiddenConfirmPassword(!hiddenConfirmPassword);
   };
 
-  const passwordType = hiddenPassword ? "password" : "text";
-  const confirmPasswordType = hiddenConfirmPassword ? "password" : "text";
-
   const {
     register,
     handleSubmit,
@@ -48,16 +45,17 @@ export const RegisterForm = () => {
   const submit = (formData) => {
     const { confirmPassword, ...dataWithoutConfirmPassword } = formData;
     request(dataWithoutConfirmPassword);
-    console.log(dataWithoutConfirmPassword);
     reset();
   };
+
+  const navigate = useNavigate();
 
   const request = async (formData) => {
     try {
       await api.post("/users", formData);
       notifySucess();
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/");
       }, 3000);
     } catch (error) {
       notifyError();
@@ -82,6 +80,7 @@ export const RegisterForm = () => {
             label="Nome"
             labelClass="label"
             id="name"
+            className={errors.name ? styles.error : null}
             placeholder="Digite aqui seu nome"
             type="text"
             name="name"
@@ -94,6 +93,7 @@ export const RegisterForm = () => {
             label="Email"
             labelClass="label"
             id="email"
+            className={errors.email ? styles.error : null}
             placeholder="Digite aqui seu email"
             type="email"
             name="email"
@@ -106,9 +106,11 @@ export const RegisterForm = () => {
             label="Senha"
             labelClass="label"
             id="password"
-            className={styles.passwordInput}
+            className={`${styles.passwordInput} ${
+              errors.password ? styles.error : null
+            }`}
             placeholder="Digite aqui sua senha"
-            type={passwordType}
+            type={hiddenPassword ? "password" : "text"}
             name="password"
             {...register("password")}
           />
@@ -130,9 +132,11 @@ export const RegisterForm = () => {
             label="Confirmar Senha"
             labelClass="label"
             id="confirmPassword"
-            className={styles.confirmPasswordInput}
+            className={`${styles.confirmPasswordInput} ${
+              errors.confirmPassword ? styles.error : null
+            }`}
             placeholder="Digite novamente sua senha"
-            type={confirmPasswordType}
+            type={hiddenConfirmPassword ? "password" : "text"}
             name="confirmPassword"
             {...register("confirmPassword")}
           />
@@ -156,6 +160,7 @@ export const RegisterForm = () => {
             label="Bio"
             labelClass="label"
             id="bio"
+            className={errors.bio ? styles.error : null}
             placeholder="Fale sobre você"
             type="text"
             name="bio"
@@ -168,6 +173,7 @@ export const RegisterForm = () => {
             label="Contato"
             labelClass="label"
             id="contact"
+            className={errors.contact ? styles.error : null}
             placeholder="Opção de contato"
             type="text"
             name="contact"
@@ -180,6 +186,7 @@ export const RegisterForm = () => {
             label="Selecionar módulo"
             labelClass="label"
             id="course_module"
+            className={errors.course_module ? styles.error : null}
             name="course_module"
             value={moduleOptions}
             setModuleOptions={setModuleOptions}

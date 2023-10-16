@@ -48,6 +48,10 @@
       border-radius: var(--radius);
     }
 
+    .error {
+      border: 0.0625rem solid var(--negative);
+    }
+
     input:focus {
       border: 0.0625rem solid var(--gray-0);
     }
@@ -84,6 +88,14 @@
       border-radius: var(--radius);
     }
 
+    .passwordInput:focus {
+      border: 0.0625rem solid var(--gray-0);
+    }
+
+    .error {
+      border: 0.0625rem solid var(--negative);
+    }
+
     .iconPassword {
       color: var(--gray-1);
       position: absolute;
@@ -115,6 +127,14 @@
       border-radius: var(--radius);
     }
 
+    .confirmPasswordInput:focus {
+      border: 0.0625rem solid var(--gray-0);
+    }
+
+    .error {
+      border: 0.0625rem solid var(--negative);
+    }
+
     .iconConfirmPassword {
       color: var(--gray-1);
       position: absolute;
@@ -128,7 +148,7 @@
   p {
     font-size: var(--headline);
 
-    color: var(--color-primary);
+    color: var(--negative);
   }
 }
 

@@ -2,7 +2,7 @@ import { Input } from "./Input";
 import Logo from "../../assets/Logo.svg";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "./style.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -38,12 +38,14 @@ export const LoginForm = () => {
     request(formData);
   };
 
+  const navigate = useNavigate();
+
   const request = async (formData) => {
     try {
       const { data } = await api.post("/sessions", formData);
       notifySucess();
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       }, 3000);
       localStorage.setItem("@token", JSON.stringify(data.token));
       localStorage.setItem("@name", JSON.stringify(data.user.name));
@@ -56,8 +58,6 @@ export const LoginForm = () => {
     }
   };
 
-  const passwordType = hiddenPassword ? "password" : "text";
-
   return (
     <div className="container">
       <img src={Logo} alt="Logo" />
@@ -68,7 +68,9 @@ export const LoginForm = () => {
             label="Email"
             labelClass="label"
             id="email"
-            className={styles.emailInput}
+            className={`${styles.emailInput} ${
+              errors.email ? styles.error : null
+            }`}
             type="email"
             name="email"
             {...register("email")}
@@ -80,8 +82,10 @@ export const LoginForm = () => {
             label="Senha"
             labelClass="label"
             id="password"
-            className={styles.passwordInput}
-            type={passwordType}
+            className={`${styles.passwordInput} ${
+              errors.password ? styles.error : null
+            }`}
+            type={hiddenPassword ? "password" : "text"}
             name="password"
             {...register("password")}
           />
