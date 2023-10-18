@@ -6,7 +6,7 @@ export const Input = forwardRef(({ label, labelClass, id, ...rest }, ref) => {
       <label htmlFor={id} className={labelClass}>
         {label}
       </label>
-      <input id={id} {...rest} ref={ref} />
+      <input {...rest} id={id} ref={ref} />
     </>
   );
 });
