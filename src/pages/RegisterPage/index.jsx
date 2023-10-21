@@ -3,36 +3,29 @@ import { SelectInput } from "../../components/SelectInput";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formSchemaRegister } from "./RegisterForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../services/api";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "../../providers/UserContext";
+import { FormContext } from "../../providers/FormContext";
 
 export const RegisterPage = () => {
-  const [moduleOptions, setModuleOptions] = useState("Selecione um módulo");
-  const [hiddenPassword, setHiddenPassword] = useState(true);
-  const [hiddenConfirmPassword, setHiddenConfirmPassword] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const notifySucess = () => {
-    toast.success("Conta criada com sucesso!");
-  };
+  const { userRegister } = useContext(UserContext);
 
-  const notifyError = () => {
-    toast.error("Ops! Algo deu errado");
-  };
-
-  const handleHiddenPassword = () => {
-    setHiddenPassword(!hiddenPassword);
-  };
-
-  const handleHiddenConfirmPassword = () => {
-    setHiddenConfirmPassword(!hiddenConfirmPassword);
-  };
+  const {
+    moduleOptions,
+    setModuleOptions,
+    hiddenPassword,
+    hiddenConfirmPassword,
+    handleHiddenConfirmPassword,
+    handleHiddenPassword,
+  } = useContext(FormContext);
 
   const {
     register,
@@ -44,25 +37,7 @@ export const RegisterPage = () => {
   });
 
   const submit = (formData) => {
-    request(formData);
-    reset();
-  };
-
-  const navigate = useNavigate();
-
-  const request = async (formData) => {
-    try {
-      setLoading(true);
-      await api.post("/users", formData);
-      notifySucess();
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    } catch (error) {
-      notifyError();
-    } finally {
-      setLoading(false);
-    }
+    userRegister(formData, setLoading, reset);
   };
 
   return (

@@ -1,11 +1,11 @@
 import { Header } from "../../components/Dashboard/Header";
 import { Main } from "../../components/Dashboard/Main";
 
-export const DashboardPage = ({ userInfos, logout }) => {
+export const DashboardPage = () => {
   return (
     <>
-      <Header logout={logout} />
-      <Main userInfos={userInfos} />
+      <Header />
+      <Main />
     </>
   );
 };

@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import styles from "./style.module.scss";
+import { UserContext } from "../../../providers/UserContext";
 
-export const Main = ({ userInfos }) => {
+export const Main = () => {
+  const { userInfos } = useContext(UserContext);
+
   return (
     <main className="container dashboard">
       <div className={styles.topDiv}>

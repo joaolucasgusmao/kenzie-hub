@@ -2,26 +2,21 @@ import { Input } from "../../components/Input";
 import Logo from "../../assets/Logo.svg";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "./style.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formSchemaLogin } from "./LoginForm.schema";
-import { api } from "../../services/api";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "../../providers/UserContext";
+import { FormContext } from "../../providers/FormContext";
 
-export const LoginPage = ({ setUserInfos }) => {
-  const [hiddenPassword, setHiddenPassword] = useState(true);
+export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
-  const notifySucess = () => {
-    toast.success("Login realizado com sucesso!");
-  };
-
-  const notifyError = () => {
-    toast.error("Credenciais inválidas!");
-  };
+  const { userLogin } = useContext(UserContext);
+  const { hiddenPassword, handleHiddenPassword } = useContext(FormContext);
 
   const {
     register,
@@ -31,31 +26,8 @@ export const LoginPage = ({ setUserInfos }) => {
     resolver: zodResolver(formSchemaLogin),
   });
 
-  const handleHiddenPassword = () => {
-    setHiddenPassword(!hiddenPassword);
-  };
-
   const submit = (formData) => {
-    request(formData);
-  };
-
-  const navigate = useNavigate();
-
-  const request = async (formData) => {
-    try {
-      setLoading(true);
-      const { data } = await api.post("/sessions", formData);
-      notifySucess();
-      setUserInfos(data.user);
-      localStorage.setItem("@token", JSON.stringify(data.token));
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
-    } catch (error) {
-      notifyError();
-    } finally {
-      setLoading(false);
-    }
+    userLogin(formData, setLoading);
   };
 
   return (
@@ -109,7 +81,7 @@ export const LoginPage = ({ setUserInfos }) => {
           </Link>
         </div>
       </form>
-      <ToastContainer theme="dark" autoClose={2000} />
+      <ToastContainer theme="dark" autoClose={1000} />
     </div>
   );
 };
