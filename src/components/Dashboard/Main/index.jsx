@@ -8,8 +8,10 @@ export const Main = () => {
   return (
     <main className="container dashboard">
       <div className={styles.topDiv}>
-        <p className="title">Olá, {userInfos?.name}</p>
-        <p className="smText dashboard">{userInfos?.course_module}</p>
+        <div className={styles.infos}>
+          <p className="title">Olá, {userInfos?.name}</p>
+          <p className="smText dashboard">{userInfos?.course_module}</p>
+        </div>
       </div>
       <div className={styles.bottomDiv}>
         <p className="title">Que pena! Estamos em desenvolvimento :(</p>

@@ -8,11 +8,13 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <img src={Logo} alt="Logo" />
+      <div>
+        <img src={Logo} alt="Logo" />
 
-      <button onClick={() => userLogout()} className="btn exit">
-        Sair
-      </button>
+        <button onClick={() => userLogout()} className="btn exit">
+          Sair
+        </button>
+      </div>
     </header>
   );
 };
