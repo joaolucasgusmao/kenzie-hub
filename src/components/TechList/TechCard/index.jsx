@@ -2,8 +2,8 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import styles from "./style.module.scss";
 import { useContext } from "react";
-import { TechContext } from "../../../../../providers/TechContext";
-import { ModalContext } from "../../../../../providers/ModalContext";
+import { TechContext } from "../../../providers/TechContext";
+import { ModalContext } from "../../../providers/ModalContext";
 
 export const TechCard = ({ title, status, tech }) => {
   const { deleteTech, selectEditingTech } = useContext(TechContext);
@@ -26,7 +26,7 @@ export const TechCard = ({ title, status, tech }) => {
               }}
               className={styles.editIcon}
             />
-            <RiDeleteBin6Line
+            <RiDeleteBin6Line 
               onClick={() => deleteTech(tech.id)}
               className={styles.deleteIcon}
             />

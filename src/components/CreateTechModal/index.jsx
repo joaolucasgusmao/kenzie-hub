@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./style.module.scss";
 import { TechContext } from "../../providers/TechContext";
 import { SelectInput } from "../SelectInput";
@@ -9,6 +9,7 @@ import { FormContext } from "../../providers/FormContext";
 import { ModalContext } from "../../providers/ModalContext";
 
 export const CreateTechModal = () => {
+  const [loading, setLoading] = useState(false);
   const { statusOptions, setStatusOptions } = useContext(FormContext);
 
   const { createTech } = useContext(TechContext);
@@ -18,11 +19,11 @@ export const CreateTechModal = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const submit = (formData) => {
-    createTech(formData, reset);
+    createTech(formData, reset, setLoading);
   };
 
   return (
-    <div className={styles.modalOverlay}>
+    <div className={styles.modalOverlay} id="addModalOverlay">
       <div className={styles.modal}>
         <div className={styles.topDiv}>
           <p className="title modal">Cadastrar Tecnologia</p>
@@ -60,7 +61,9 @@ export const CreateTechModal = () => {
               <Option value="Avançado" textName="Avançado" />
             </SelectInput>
           </div>
-          <button className="btn registerDisabled">Cadastrar Tecnologia</button>
+          <button disabled={loading} className="btn registerDisabled">
+            Cadastrar Tecnologia
+          </button>
         </form>
       </div>
     </div>

@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import styles from "./style.module.scss";
 import { UserContext } from "../../../providers/UserContext";
-import { TechList } from "./TechList";
+import { TechList } from "../../TechList";
 import { CreateTechModal } from "../../CreateTechModal";
 import { EditTechModal } from "../../EditTechModal";
-import { TechContext } from "../../../providers/TechContext";
 import { ModalContext } from "../../../providers/ModalContext";
 
 export const Main = () => {
