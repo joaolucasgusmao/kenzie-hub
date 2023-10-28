@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./style.module.scss";
 import { TechContext } from "../../providers/TechContext";
 import { Input } from "../Input";
@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import { ModalContext } from "../../providers/ModalContext";
 
 export const EditTechModal = () => {
+  const [loading, setLoading] = useState(false);
+
   const { updateTech, editingTech } = useContext(TechContext);
 
   const { statusOptions, setStatusOptions } = useContext(FormContext);
@@ -23,11 +25,11 @@ export const EditTechModal = () => {
   });
 
   const submit = (FormData) => {
-    updateTech(FormData);
+    updateTech(FormData, setLoading);
   };
 
   return (
-    <div className={styles.modalOverlay}>
+    <div className={styles.modalOverlay} id="editModalOverlay">
       <div className={styles.modal}>
         <div className={styles.topDiv}>
           <p className="title modal">Tecnologia Detalhes</p>
@@ -65,7 +67,11 @@ export const EditTechModal = () => {
               <Option value="Avançado" textName="Avançado" />
             </SelectInput>
           </div>
-          <button type="submit" className="btn registerDisabled">
+          <button
+            disabled={loading}
+            type="submit"
+            className="btn registerDisabled"
+          >
             Salvar alterações
           </button>
         </form>

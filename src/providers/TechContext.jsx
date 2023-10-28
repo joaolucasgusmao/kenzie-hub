@@ -29,8 +29,9 @@ export const TechProvider = ({ children }) => {
     toast.error("Por favor, preencha os campos!");
   };
 
-  const createTech = async (formData, reset) => {
+  const createTech = async (formData, reset, setLoading) => {
     try {
+      setLoading(true);
       const token = JSON.parse(localStorage.getItem("@token"));
       const { data } = await api.post("/users/techs", formData, {
         headers: {
@@ -48,6 +49,8 @@ export const TechProvider = ({ children }) => {
       ) {
         notifyError();
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,8 +70,9 @@ export const TechProvider = ({ children }) => {
     }
   };
 
-  const updateTech = async (formData) => {
+  const updateTech = async (formData, setLoading) => {
     try {
+      setLoading(true);
       const token = JSON.parse(localStorage.getItem("@token"));
       const { data } = await api.put(
         `/users/techs/${editingTech.id}`,
@@ -91,6 +95,8 @@ export const TechProvider = ({ children }) => {
       setTechList(newTechList);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
