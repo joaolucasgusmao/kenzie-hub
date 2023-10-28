@@ -14,7 +14,14 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 2rem;
+    padding: 0 1rem;
+
+    button:hover {
+      transform: scale(1.08);
+      transition: 0.5s;
+      
+      background-color: var(--gray-2);
+    }
   }
 
   background-color: var(--gray-4);

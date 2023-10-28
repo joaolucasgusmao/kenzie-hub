@@ -9,6 +9,7 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const [userInfos, setUserInfos] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [techList, setTechList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -74,7 +75,7 @@ export const UserProvider = ({ children }) => {
       notifySuccessRegister();
       setTimeout(() => {
         navigate("/");
-      }, 3 * 1000);
+      }, 2 * 1000);
     } catch (error) {
       notifyErrorRegister();
     } finally {
@@ -83,9 +84,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const userLogout = () => {
+    notifyLogout();
     localStorage.removeItem("@token");
     setUserInfos(null);
-    notifyLogout();
     navigate("/");
   };
 
@@ -98,6 +99,8 @@ export const UserProvider = ({ children }) => {
         userLogin,
         userRegister,
         loading,
+        techList,
+        setTechList,
       }}
     >
       {children}

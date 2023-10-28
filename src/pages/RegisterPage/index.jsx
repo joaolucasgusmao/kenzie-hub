@@ -1,4 +1,5 @@
 import { Input } from "../../components/Input";
+import { Option } from "../../components/SelectInput/Option";
 import { SelectInput } from "../../components/SelectInput";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
@@ -167,9 +168,24 @@ export const RegisterPage = () => {
             className={errors.course_module ? styles.error : null}
             name="course_module"
             value={moduleOptions}
+            setStatusOptions={null}
             setModuleOptions={setModuleOptions}
             {...register("course_module")}
-          />
+          >
+            <Option value="" textName="Selecione um módulo" />
+            <Option
+              value="Módulo 1 (Introdução ao Frontend)"
+              textName="Módulo 1 (Introdução ao Frontend)"
+            />
+            <Option
+              value="Módulo 2 (Frontend intermediário)"
+              textName="Módulo 2 (Frontend intermediário)"
+            />
+            <Option
+              value="Módulo 3 (Frontend avançado)"
+              textName="Módulo 3 (Frontend avançado)"
+            />
+          </SelectInput>
           {errors.course_module ? <p>{errors.course_module.message}</p> : null}
         </div>
         <button
@@ -180,7 +196,7 @@ export const RegisterPage = () => {
           Cadastrar
         </button>
       </form>
-      <ToastContainer theme="dark" autoClose={2000} />
+      <ToastContainer theme="dark" autoClose={1000} />
     </div>
   );
 };

@@ -10,7 +10,12 @@
     font-weight: var(--weight4);
 
     font-size: var(--title2);
-    line-height: 24.36px;
+    line-height: 1.5225rem;
+  }
+
+  &.modal {
+    font-size: var(--sm);
+    line-height: 1.5rem;
   }
 }
 
@@ -38,6 +43,11 @@
     line-height: 1.375rem;
 
     font-weight: var(--weight4);
+  }
+
+  &.close {
+    font-size: var(--title2);
+    line-height: 1.625rem;
   }
 }
 
