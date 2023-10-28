@@ -23,4 +23,9 @@ input {
 select {
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
 }

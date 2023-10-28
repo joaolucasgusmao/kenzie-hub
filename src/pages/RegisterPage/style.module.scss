@@ -5,6 +5,13 @@
   justify-content: space-between;
 
   margin-top: 2rem;
+
+  button:hover {
+    transform: scale(1.08);
+    transition: 0.5s;
+
+    background-color: var(--gray-2);
+  }
 }
 
 .form {
@@ -149,6 +156,13 @@
     font-size: var(--headline);
 
     color: var(--negative);
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+
+    background-color: var(--color-primary-focus);
   }
 }
 

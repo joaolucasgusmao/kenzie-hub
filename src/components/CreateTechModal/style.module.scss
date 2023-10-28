@@ -1,0 +1,107 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(0.2rem);
+
+  .modal {
+    width: 23.0625rem;
+    height: 19.375rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    border-radius: var(--radius);
+    background-color: var(--gray-3);
+
+    animation: slide-down 0.3s ease-in-out forwards;
+
+    .topDiv {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 1rem;
+
+      border-radius: var(--radius) var(--radius) 0 0;
+      background-color: var(--gray-2);
+
+      height: 2.8125rem;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+
+      margin: 0 1rem;
+
+      .inputDiv {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .input {
+          height: 2.6rem;
+
+          padding-left: 0.5rem;
+
+          background-color: var(--gray-2);
+          color: var(--gray-0);
+          border-radius: var(--radius);
+
+          &.edit {
+            color: var(--gray-1);
+          }
+
+          &.edit:focus {
+            border: none;
+          }
+        }
+
+        .input:focus {
+          border: 0.0761rem solid var(--gray-0);
+        }
+      }
+
+      button {
+        width: 100%;
+
+        margin-top: 0.8rem;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+        transition: 0.5s;
+
+        background-color: var(--color-primary-focus);
+      }
+    }
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

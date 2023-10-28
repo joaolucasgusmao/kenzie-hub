@@ -16,6 +16,13 @@
     padding-top: 2rem;
   }
 
+  button:hover {
+    transform: scale(1.08);
+    transition: 0.5s;
+
+    background-color: var(--color-primary-focus);
+  }
+
   .emailInputDiv {
     display: flex;
     flex-direction: column;
@@ -101,6 +108,17 @@
 
     p {
       text-align: center;
+    }
+
+    span {
+      text-align: center;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      transition: 0.5s;
+
+      background-color: var(--gray-2);
     }
   }
 }

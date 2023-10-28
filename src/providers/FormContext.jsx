@@ -4,6 +4,7 @@ export const FormContext = createContext({});
 
 export const FormProvider = ({ children }) => {
   const [moduleOptions, setModuleOptions] = useState("Selecione um módulo");
+  const [statusOptions, setStatusOptions] = useState("Selecionar status");
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const [hiddenConfirmPassword, setHiddenConfirmPassword] = useState(true);
 
@@ -26,6 +27,8 @@ export const FormProvider = ({ children }) => {
         setHiddenPassword,
         hiddenConfirmPassword,
         setHiddenConfirmPassword,
+        statusOptions,
+        setStatusOptions
       }}
     >
       {children}
