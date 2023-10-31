@@ -33,7 +33,8 @@ export const UserProvider = ({ children }) => {
     try {
       setLoading(true);
       const { data } = await api.post("/sessions", formData);
-      setUserInfos(data.user);
+      setUserInfos(data?.user);
+      setTechList(data?.user.techs);
       localStorage.setItem("@token", JSON.stringify(data.token));
     } catch (error) {
       if (
@@ -58,7 +59,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUserInfos(data);
-        setTechList(data.techs);
+        setTechList(data?.techs);
       } catch (error) {
         console.log(error);
       } finally {
