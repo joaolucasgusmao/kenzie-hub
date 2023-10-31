@@ -10,15 +10,15 @@ import { ModalProvider } from "./providers/ModalContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <FormProvider>
-        <UserProvider>
+      <UserProvider>
+        <FormProvider>
           <ModalProvider>
             <TechProvider>
               <App />
             </TechProvider>
           </ModalProvider>
-        </UserProvider>
-      </FormProvider>
+        </FormProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

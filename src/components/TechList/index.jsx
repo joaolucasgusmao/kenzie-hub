@@ -9,7 +9,7 @@ export const TechList = () => {
   return techList.length > 0 ? (
     <ul className={styles.list}>
       <div className={styles.div}>
-        {techList.map((tech) => (
+        {techList?.map((tech) => (
           <TechCard
             key={tech.id}
             title={tech.title}
