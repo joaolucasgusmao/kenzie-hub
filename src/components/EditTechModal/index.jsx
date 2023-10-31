@@ -30,7 +30,7 @@ export const EditTechModal = () => {
 
   return (
     <div className={styles.modalOverlay} id="editModalOverlay">
-      <div className={styles.modal} id="editModal">
+      <div className={styles.modal}>
         <div className={styles.topDiv}>
           <p className="title modal">Tecnologia Detalhes</p>
           <span onClick={handleCloseEditModal} className="smText close">

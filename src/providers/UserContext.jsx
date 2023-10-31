@@ -58,6 +58,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUserInfos(data);
+        setTechList(data.techs);
       } catch (error) {
         console.log(error);
       } finally {
