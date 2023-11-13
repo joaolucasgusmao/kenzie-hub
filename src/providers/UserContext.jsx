@@ -17,10 +17,6 @@ export const UserProvider = ({ children }) => {
     toast.error("Credenciais inválidas!");
   };
 
-  const notifyLogout = () => {
-    toast.warning("Deslogando...");
-  };
-
   const notifySuccessRegister = () => {
     toast.success("Conta criada com sucesso!");
   };
@@ -86,7 +82,6 @@ export const UserProvider = ({ children }) => {
   };
 
   const userLogout = () => {
-    notifyLogout();
     localStorage.removeItem("@token");
     setUserInfos(null);
     navigate("/");
