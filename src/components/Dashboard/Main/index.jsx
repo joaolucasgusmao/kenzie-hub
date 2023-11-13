@@ -7,14 +7,16 @@ import { EditTechModal } from "../../EditTechModal";
 import { ModalContext } from "../../../providers/ModalContext";
 
 export const Main = () => {
-  const { userInfos } = useContext(UserContext);
+  const { userInfos, techList } = useContext(UserContext);
 
   const { addIsHidden, editIsHidden, handleOpenAddModal } =
     useContext(ModalContext);
 
+  const containerClassName = () => techList.length >= 9 ? "container auto" : "container dashboard";
+
   return (
     <>
-      <main className="container dashboard">
+      <main className={containerClassName()}>
         <div className={styles.topDiv}>
           <div className={styles.infos}>
             <p className="title">Olá, {userInfos?.name}</p>
