@@ -44,7 +44,7 @@ export const RegisterPage = () => {
   return (
     <div className="container register">
       <div className={styles.topDiv}>
-        <img src={Logo} alt="Logo" />
+        <img className="logo" src={Logo} alt="Logo" />
         <Link to="/">
           <button className="btn back">Voltar</button>
         </Link>

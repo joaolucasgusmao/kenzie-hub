@@ -32,7 +32,7 @@ export const LoginPage = () => {
 
   return (
     <div className="container">
-      <img src={Logo} alt="Logo" />
+      <img className="logo" src={Logo} alt="Logo" />
       <form onSubmit={handleSubmit(submit)} className={styles.form}>
         <h2 className="title">Login</h2>
         <div className={styles.emailInputDiv}>
